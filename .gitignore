@@ -1,0 +1,6 @@
+/.local
+/.pythonlibs
+/.vscode
+/.streamlit
+/.upm
+.env

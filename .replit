@@ -1,0 +1,81 @@
+modules = ["python-3.11"]
+
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start Snuggli App"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Audio Test"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Create Mood Journal Table"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Create Activities Table"
+
+[[workflows.workflow]]
+name = "Start Snuggli App"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "streamlit run main.py --server.port 5000"
+waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Audio Test"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "streamlit run audio_test.py --server.port 5000"
+waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Create Mood Journal Table"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python create_mood_journal_table.py"
+
+[[workflows.workflow]]
+name = "Create Activities Table"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python create_activities_table.py"
+
+[deployment]
+run = ["sh", "-c", "streamlit run main.py --server.port 5000"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
