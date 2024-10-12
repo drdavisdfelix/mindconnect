@@ -6,3 +6,7 @@ requests
 utils
 PyPDF2
 openai
+dotenv
+streamlit_webrtc
+pydub
+numpy
