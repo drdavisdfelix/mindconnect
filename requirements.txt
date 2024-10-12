@@ -1,11 +1,9 @@
 streamlit
 supabase
 python-dotenv
-streamlit-option-menu
 requests
-utils
-PyPDF2
 openai
 streamlit_webrtc
-pydub
 numpy
+pydub
+streamlit-audiorecorder
